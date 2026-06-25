@@ -1,0 +1,24 @@
+// 61^8
+
+var res = "";
+for(i=0;i<8;i++){ 
+var char = Math.floor(Math.random() * 35); // 61
+char += (char<10?48:55); /// (char<10?48:(char<=35?55:61)) +48: 0 - 10, +55: 10 - 35, +61: 36 - 60
+// char += (char>90?7:0)  
+res += String.fromCharCode(char);
+}
+return res;
+/*
+char<10?48:55
++48 | 10x 
+0 - 48
+9 - 57
+
++55 | 25x
+A - 65
+Z - 90
+
++61 | 25x
+a - 97
+z - 122
+*/

@@ -1,0 +1,4 @@
+instalace node
+npm init
+npm instal express
+npm instal socket.io socket.io-client

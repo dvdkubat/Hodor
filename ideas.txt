@@ -1,0 +1,96 @@
+
+
+
+založit na serveru něco jako je v Unity GameObject (W3 - component)
+  -- mohlo by to mít i nějaký základní funkce a tak, určitě by to bylo dost dobrý..
+     -- možná bych to mohl brát "objektově" a udělat i pole komponentů
+
+function component(width, height, color, name, tag, x, y, speedX, speedY, animation) {
+    this.name = name;
+    this.tag = tag; 
+    this.color = color;
+    this.animation = animation;
+    this.lastAnimation = 0;
+    this.width = width;
+    this.height = height;
+    this.speedX = speedX;
+    this.speedY = speedY;
+    this.x = x;
+    this.y = y;   
+    this.update = function() {
+        if(this.alive){ 
+          ctx = myGameArea.context;
+          if(this.tag == "Player") {
+         
+            var image = new Image; 
+            image.src = this.color;
+
+            ctx = myGameArea.context; 
+            ctx.drawImage(image, this.x, this.y, playerWidth, playerHeight);
+          }
+          else{
+            ctx.fillStyle = color;
+            ctx.fillRect(this.x, this.y, this.width, this.height);
+          }
+        }
+    } 
+}
+
+- pozice
+- rychlost
+- název
+- obrázek || barva
+- ... ?
+- - - použil by se pro to nějak šikovně ten prototype ?
+
+
+
+
+
+
+
+
+
+
+
+
+- počítání zásahů, skóre
+- změna zbraně
+
+# zbraně
+- pistol (rychlost 15)
+- brokovnice (10) vygeneruju 3 střely a do směru dám +-
+- snipa (instant)
+ - asi bych musel vypočítat jestli se trefim, a pak zksuit zda dolítnu
+
+# střelba
+- v půlce mezi poslední pozicí a aktuální vykreslit lehce průhledný (50%) čtverec?
+ - mohla by být plynulejší animace
+
+# hitboxy
+- počítat vektorama (mezi bodama)
+ - (s1x-s2x)^2 + (s1y-s2y)^2 < (r1+r2)^2 (jsem dostatečně blízko !
+- udělat šachovnici pro výpočty ((4x4) velká pro statické, (8x8) malá pro dynamické)
+ - blížím se k čáře - přelezl jsem jí
+- výška boxu? Můžu přes to střelit, ale nemůžu přejít (bod by u sebe musel mít výšku)
+ - (layer) 1 letí nad 0 (ignoruju menší čísla ?)
+
+
+# map editor + vykreslení
+- mapu kreslím podle rozměrů obrázku
+- body vyčítám ze souboru
+
+- dva || 3 soubory textu ?
+ - hitboxy
+ - spawny
+  - power up
+  - spawn hráče
+
+# herní módy?
+- DM
+- CTF (potřeboval bych objekt, kterej můžu sebrat)
+
+# powerups
+- vesta
+- rychlejší chůze
+- neviditelnost
